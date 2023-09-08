@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ログイン成功</title>
+</head>
+<body>
+ <h1>ログインに成功しました</h1>
+ <p th:text="${username}"></p>
+<!--  <a th:href="@{/owner}">オーナー</a>
+ <a th:href="@{/stylist}">スタイリスト</a>
+ <a th:href="@{/assistant}">アシスタント</a> -->
+<form method="post">
+ <button formaction="/owner">オーナー</button>
+ <button formaction="/stylist">スタイリスト</button>
+ <button formaction="/assistant">アシスタント</button>
+ <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+ </form>
+ <form th:action="@{/logout}" method="post">
+ <input type="submit" value="ログアウト"/>
+ </form>
+</body>
+</html>

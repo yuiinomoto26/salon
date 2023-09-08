@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>SALON顧客システム</title>
+<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&family=Montserrat:wght@700&family=Roboto:ital,wght@0,500;1,100&display=swap" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+<link rel="stylesheet" href="css/crud.css">
+</head>
+<body>
+	
+	<h1 style="color:#583822; font-size:50px ;margin-top:0px; margin-bottom:0px">SALON</h1>
+    <img th:src="@{/image/andrea-donato-MGt5tcLebds-unsplash.jpg}" style="width:100vw">
+	<!-- 登録・更新完了コメント -->
+	<!-- ここまで上部エリア -->
+	<hr>
+	<!-- ここから下部エリア -->
+	<!-- ▼▼▼ 新規登録時のみ表示 ▼▼▼ -->
+	<div th:if="${salonForm.newMember}" style="margin: 5px">
+		<h3>お客様一覧  <a th:href="@{/salon/touroku}">登録</a><br></h3>
+		<!-- 削除完了コメント -->
+		<p th:if="${delcomplete}" th:text="${delcomplete}" style="color:#aed3e6"></p>
+		<p th:if="${msg}" th:text="${msg}" style="color:#e3acae"></p>
+		
+		<!-- ▼▼▼ 顧客情報が1件でもあれば表示 ▼▼▼ -->
+
+		<table th:unless="${#lists.isEmpty(list)}">
+			<tr>
+				<th>会員No.</th>
+				<th>名前</th>
+				<th>最終来店日</th>
+				<th>担当者</th>
+				<th>メニュー</th>
+				<th>メモ</th>
+				<th>編集</th>
+				<th>削除</th>
+			</tr>
+			<tr th:each="obj : ${list}" align="center">
+				<td th:text="${obj.id}"></td>
+				<td th:text="${obj.name}"></td>
+				<td th:text="${obj.visit}"></td>
+				<td th:text="${obj.stylist}"></td>
+				<td th:text="${obj.menu}"></td>
+				<td th:text="${obj.memo}" align="left"></td>
+				<!-- 編集ボタン -->
+				<td>
+					<form method="GET" th:action="@{/salon/{id}(id=${obj.id})}">
+						<input type="submit" value="編集">
+					</form>
+				</td>
+				<!-- 削除ボタン -->
+				<td>
+					<form method="POST" th:action="@{/salon/delete}">
+						<input type="hidden" name="id" th:value="${obj.id}">
+						<input type="submit" value="削除">
+					</form>
+				</td>
+			</tr>
+		</table>
+		
+		<!-- △△△データが一件でもあれば表示△△△ -->
+		<!-- ▼▼▼データが一件もない場合表示▼▼▼ -->
+		<p th:if="${#lists.isEmpty(list)}">登録されている顧客情報はありません。</p>
+		<!-- △△△データが一件もない場合表示△△△ -->
+	</div>
+	<!-- △△△新規登録時のみ表示△△△ -->
+	<!-- ▼▼▼新規登録時でない時に表示▼▼▼ -->
+	<p th:unless="${salonForm.newMember}">
+		<a href="#" th:href="@{/salon}">CRUD画面に戻る</a>
+	</p>
+	<!-- △△△新規登録時でない時に表示△△△ -->
+</body>
+</html>

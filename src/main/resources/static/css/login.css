@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+body {
+  background-color:#DAF2DC;
+  font-size: 100%;
+}
+
+form{
+  position: absolute;
+  top: 50%;
+  left: 46%;
+  margin-top: -100px;
+  margin-left: -100px;
+  text-align: center;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>SALON顧客システム</title>
+</head>
+<body style="background-color:#DAF2DC">
+	<h3 th:text="${title}">顧客システム</h3>
+   <p th:if="${complete}" th:text="${complete}" ></p>
+	<!-- ▼▼▼ Form ▼▼▼ -->
+	<form method="POST"
+		th:action="${salonForm.newMember}? @{/salon/insert} : @{/salon/update}"
+		th:object="${salonForm}">
+		<label>会員No.</label>
+		<input type="text" th:field="*{id}" /><br>
+		<label>名前</label>
+		<input type="text" th:field="*{name}" /><br>
+		<label>最終来店日</label>
+		<input type="date" th:field="*{visit}"><br>
+		<label>担当者</label>
+		<input type="search" th:field="*{stylist}" autocomplete="on"
+			list="list">
+			<datalist id="list">
+			<option value="yuan">
+			<option value="mei">
+			<option value="sosuke">
+			<option value="marukuru">
+			<option value="chihiro">
+			<option value="satsuki">
+			<option value="kanta">
+			</datalist><br>
+		<label>メニュー</label>
+			<input type="checkbox" th:field="*{menu}" value="00" checked>cut
+			<input type="checkbox" th:field="*{menu}" value="10">color
+			<input type="checkbox" th:field="*{menu}" value="20">parm
+			<input type="checkbox" th:field="*{menu}" value="30">straight
+			<input type="checkbox" th:field="*{menu}" value="40">treatment
+			<input type="checkbox" th:field="*{menu}" value="50">spa
+			<input type="checkbox" th:field="*{menu}" value="60">まつ毛menu
+			<input type="checkbox" th:field="*{menu}" value="70">その他
+			<br>
+		<label>メモ</label><br>
+		<textarea rows="5" cols="50" th:field="*{memo}"></textarea><br>
+		<input type="submit" value="送信">
+		</form>
+</body>
+</html>
