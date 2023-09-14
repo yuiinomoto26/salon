@@ -79,7 +79,7 @@ public class SalonController {
 		}
 		
 		makeUpdateModel(salonForm, model);
-		return "crud";
+		return "touroku";
 		
 	}
 	
@@ -100,7 +100,7 @@ public class SalonController {
 			service.updateSalon(salon);
 			redirectAttributes.addFlashAttribute("complete", "更新が完了しました");
 			
-			return "redirect:/salon/" + salon.getId();
+			return "redirect:/salon";
 		} else {
 			makeUpdateModel(salonForm, model);
 			return "crud";
