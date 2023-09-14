@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="../static/css/register.css" rel="stylesheet"
+	type="text/css">
+<title>Insert title here</title>
+</head>
+<body>
+	div class="box_con08">
+        <form method="post" action="mail.php">
+        <ul class="formTable">
+        <li>
+            <p class="title"><em>確認</em></p>
+            <div class="box_det">
+                 <div class="box_br">
+                     <label>
+                       <input type="radio" name="gender" value="テキスト1">
+                       テキスト1
+                    </label>
+                </div>
+                <div class="box_br">
+                    <label>
+                        <input type="radio" name="gender" value="テキスト2">
+                        テキスト2
+                    </label>
+                </div>
+            </div>
+          </li>
+          <li>
+            <p class="title"><em>ご用件</em></p>
+            <div class="box_det"><select name="ご用件">
+                <option value="">選択してください</option>
+                <option value="ご質問・お問い合わせ">ご質問・お問い合わせ</option>
+                <option value="リンクについて">リンクについて</option>
+              </select></td>
+          </li>
+          <li>
+            <p class="title"><em>お名前<span>必須</span></em></p>
+            <div class="box_det"><input size="20" type="text" class="wide" name="お名前" /></div>
+          </li>
+          <li>
+            <p class="title"><em>電話番号（半角）<span>必須</span></em></p>
+            <div class="box_det"><input size="30" type="text" class="wide" name="電話番号" /></div>
+          </li>
+          <li>
+            <p class="title"><em>Mail（半角）</em></p>
+            <div class="box_det"><input size="30" type="text" class="wide" name="Email" /></div>
+          </li>
+          <li>
+            <p class="title"><em>お問い合わせ内容</em></p>
+            <div class="box_det"><textarea name="お問い合わせ内容" cols="50" rows="5"></textarea></div>
+          </li>
+        </ul>
+	 </form>
+    </div>
+</body>
+</html>
